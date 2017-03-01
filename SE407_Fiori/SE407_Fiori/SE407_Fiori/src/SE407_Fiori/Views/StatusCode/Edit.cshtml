@@ -1,0 +1,31 @@
+﻿
+@model SE407_Fiori.StatusCodeViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "StatusCode", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Status Name-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Status Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewStatusCode.StatusName)*@
+                            @Html.TextBoxFor(Model => Model.NewStatusCode.StatusName,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewStatusCode.StatusName"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Status Codes", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Status Code INPUT FORM ROW -->
+</div><!-- END OF CONTAINER-FLUID-->

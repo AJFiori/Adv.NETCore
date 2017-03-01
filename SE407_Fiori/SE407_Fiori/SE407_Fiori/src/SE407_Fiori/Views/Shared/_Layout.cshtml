@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SE407_Fiori | @ViewData["Title"]</title>
+
+    <environment names="Development">
+        <link rel="shortcut icon" href="~/images/favicon.ico">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body id="home">
+    <!-- Header Logo and Header Mobile Logo-->
+    <div class="container-fluid headerMargin">
+        <img class="center-block hidden-xs" src="~/images/caltranslogo.png" />
+        <h3 class="headerText hidden-xs"><em>Probably The Best Bridges In The World!!</em></h3>
+    <!--Mobile View Header-->
+        <img class="center-block hidden-sm hidden-md hidden-lg" src="~/images/mobileHeader.png" />
+        <h3 class="headerText hidden-sm hidden-md hidden-lg"><em>We Build Bridges</em></h3>
+    </div>
+    <!--Start Navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+            <!--Start Container-fluid-->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav">
+                        <li><a class="fa fa-home fa-2x hidden-xs" asp-area="" asp-controller="Home" asp-action="Index"></a></li>
+                        <li><a class="hidden-sm hidden-md hidden-lg" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <!--Bridge Area-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bridge Section <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="" asp-controller="Bridge" asp-action="Index">Bridges</a></li>
+                                <li><a asp-area="" asp-controller="ConstructionDesign" asp-action="Index">Construction Designs</a></li>
+                                <li><a asp-area="" asp-controller="FunctionalClass" asp-action="Index">Functional Classes</a></li>
+                            </ul>
+                        </li>
+                        <!--Inspection Area-->  
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inspection Section <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="" asp-controller="Inspection" asp-action="Index">Inspections</a></li>
+                                <li><a asp-area="" asp-controller="InspectionCode" asp-action="Index">Inspection Codes</a></li>
+                                <li><a asp-area="" asp-controller="Inspector" asp-action="Index">Inspectors</a></li>
+                            </ul>
+                        </li>
+                        <!--Maintenace Area-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Maintenace Section <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="" asp-controller="MaintenanceAction" asp-action="Index">Maintenance Actions</a></li>
+                                <li><a asp-area="" asp-controller="MaintenanceRecord" asp-action="Index">Maintenance Records</a></li>
+                                <li><a asp-area="" asp-controller="MaterialDesign" asp-action="Index">Material Designs</a></li>
+                                <li><a asp-area="" asp-controller="StatusCode" asp-action="Index">Status Codes</a></li>
+                            </ul>
+                        </li>
+                        <li><a asp-area="" asp-controller="County" asp-action="Index">Counties</a></li>
+                        <li><a asp-area="" asp-controller="Employee" asp-action="Index">Employees</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        
+                    </ul>
+                </div>
+          </div><!--End of Container-fluid-->
+    </nav><!--End Navbar-->
+
+    <!--Start Page Content-->
+    <div class="container-fluid pageContent">
+        <div class="carousel  slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#bs-carousel" data-slide-to="1"></li>
+                <li data-target="#bs-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <!--Slide One-->
+                <div class="item slides active">
+                    <div class="slide-1"></div>
+                </div>
+                <!--Slide Two-->
+                <div class="item slides">
+                    <div class="slide-2"></div>
+                </div>
+                <!--Slide Three-->
+                <div class="item slides">
+                    <div class="slide-3"></div>
+                </div>
+            </div><!--End Carousel-inner-->
+        </div><!--End Carousel-->
+
+        <!--Page Content-->
+        <div class="container-fluid text-center">
+            <div class="row content">
+                <div class="col-sm-8 text-left">
+                    <h1>@RenderBody()</h1>
+                </div>
+                <div class="col-sm-3 sidenav">
+                    <div class="panel panel-primary panelColor">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">News</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p>Widget Content Area</p>
+                        </div>
+                        <hr />
+                        <div class="panel-body">
+                            <p>Widget Content Area</p>
+                        </div>
+                        <hr />
+                        <div class="panel-body">
+                            <p>Widget Content Area</p>
+                        </div>
+                        <hr />
+                    </div><!--End Panel-->
+                </div><!--End Col-->
+            </div><!--End Row Content-->
+        </div><!--End Container-fluid-->
+    </div><!--End Page Content-->
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <a class="toTop fa fa-chevron-circle-up fa-4x" href="#home"></a><br><br>
+        <p><em>Created By: Anthony J. Fiori III</em></p>
+    </footer>
+        
+    <!--Pre-loaded-->
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://use.fontawesome.com/4f2c6f618c.js"></script>
+        <script src="~/js/scrollToTop.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

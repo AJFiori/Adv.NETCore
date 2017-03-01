@@ -1,0 +1,50 @@
+﻿
+@model SE407_Fiori.EmployeeViewModel
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Name-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Employee Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewEmployee.Name)*@
+                            @Html.TextBoxFor(Model => Model.NewEmployee.Name,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewEmployee.Name"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Designation-->
+                        <div class="form-group">
+                            <label>Designation:</label>
+                            @*@Html.LabelFor(Model => Model.NewEmployee.Designation)*@
+                            @Html.TextBoxFor(Model => Model.NewEmployee.Designation,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewEmployee.Designation"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Salary-->
+                        <div class="form-group">
+                            <label>Salary:</label>
+                            @*@Html.LabelFor(Model => Model.NewEmployee.Salary)*@
+                            @Html.TextBoxFor(Model => Model.NewEmployee.Salary,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewEmployee.Salary"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Employees", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF EMPLOYEE INPUT FORM ROW -->
+</div>

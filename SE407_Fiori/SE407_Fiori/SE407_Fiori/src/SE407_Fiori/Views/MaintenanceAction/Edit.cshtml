@@ -1,0 +1,30 @@
+﻿@model SE407_Fiori.MaintenanceActionViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "MaintenanceAction", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--MaintenanceAction Name-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Maintenance Action Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewMaintenanceAction.MaintenanceActionName)*@
+                            @Html.TextBoxFor(Model => Model.NewMaintenanceAction.MaintenanceActionName,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewMaintenanceAction.MaintenanceActionName"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Maintenance Actions", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Maintenance Action INPUT FORM ROW -->
+</div>

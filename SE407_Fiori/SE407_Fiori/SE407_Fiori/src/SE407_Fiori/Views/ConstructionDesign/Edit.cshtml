@@ -1,0 +1,30 @@
+﻿@model SE407_Fiori.ConstructionDesignViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "ConstructionDesign", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Construction Design Type-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Construction Design Type:</label>
+                            @*@Html.LabelFor(Model => Model.NewConstructionDesign.ConstructionDesignType)*@
+                            @Html.TextBoxFor(Model => Model.NewConstructionDesign.ConstructionDesignType,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewConstructionDesign.ConstructionDesignType"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Construction Designs", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Construction Design INPUT FORM ROW -->
+</div>

@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Employees";
+}
+<div class="text-center">Welcome to the Employee Page!</div>
+    @model SE407_Fiori.EmployeeViewModel
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Index", "Employee", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Name-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Employee Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewEmployee.Name)*@
+                            @Html.TextBoxFor(Model => Model.NewEmployee.Name,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewEmployee.Name"
+                                  class="text-danger"></span>
+                        </div>
+                    <!--Designation-->
+                        <div class="form-group">
+                            <label>Designation:</label>
+                            @*@Html.LabelFor(Model => Model.NewEmployee.Designation)*@
+                            @Html.TextBoxFor(Model => Model.NewEmployee.Designation,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewEmployee.Designation"
+                                  class="text-danger"></span>
+                        </div>
+                    <!--Salary-->
+                        <div class="form-group">
+                            <label>Salary:</label>
+                            @*@Html.LabelFor(Model => Model.NewEmployee.Salary)*@
+                            @Html.TextBoxFor(Model => Model.NewEmployee.Salary,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewEmployee.Salary"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    </div>
+            }
+        </div>
+    </div><!-- END OF EMPLOYEE INPUT FORM ROW -->
+    <!-- Displays Employee Table From DB -->
+    <h2>List of Employees</h2>
+    <div class="tableMargin">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered tableSizeSM">
+                    <tr>
+                        <th>Employee ID:</th>
+                        <th>Employee Name:</th>
+                        <th>Employee Designation:</th>
+                        <th>Employee Salary:</th>
+                        <th>Update:</th>
+                    </tr>
+
+                    @foreach (var employee in Model.EmployeeList)
+                    {
+                        <tr>
+                            <td>@employee.EmployeeId</td>
+                            <td>@employee.Name</td>
+                            <td>@employee.Designation</td>
+                            @*<td>@employee.Salary</td>*@
+                            <td>@String.Format("{0:c}", employee.Salary)</td>
+                            <td><a asp-action="Edit" asp-route-id="@employee.EmployeeId">Update</a></td>
+                        </tr>
+                    }
+                </table>
+            </div><!-- END OF TABLE RESPONSIVE-->
+        </div><!--END OF SECOND ROW-->
+    </div><!-- END OF TABLE MARGIN-->
+</div><!-- END OF CONTAINER-FLUID-->

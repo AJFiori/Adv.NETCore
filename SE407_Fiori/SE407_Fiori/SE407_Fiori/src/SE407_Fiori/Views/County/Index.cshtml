@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Counties";
+}
+<div class="text-center">Welcome to the Counties Page!</div>
+
+@model SE407_Fiori.CountyViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Index", "County", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--County Name-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>County Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewCounty.CountyName)*@
+                            @Html.TextBoxFor(Model => Model.NewCounty.CountyName, 
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewCounty.CountyName"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                </div>
+            }
+        </div>
+    </div><!-- END OF County INPUT FORM ROW -->
+    <!-- Displays County Table From DB -->
+    <h2>List of Counties</h2>
+    <div class="tableMargin">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered tableSizeSM">
+                    <tr>
+                        <th>County ID:</th>
+                        <th>County Names:</th>
+                        <th>Update:</th>
+                    </tr>
+
+                    @foreach (var County in Model.CountyList)
+                    {
+                        <tr>
+                            <td>@County.CountyId</td>
+                            <td>@County.CountyName</td>
+                            <td><a asp-action="Edit" asp-route-id="@County.CountyId">Update</a></td>
+                        </tr>
+                    }
+                </table>
+            </div><!-- END OF TABLE RESPONSIVE-->
+        </div><!--END OF SECOND ROW-->
+    </div><!-- END OF TABLE MARGIN-->
+</div><!-- END OF CONTAINER-FLUID-->

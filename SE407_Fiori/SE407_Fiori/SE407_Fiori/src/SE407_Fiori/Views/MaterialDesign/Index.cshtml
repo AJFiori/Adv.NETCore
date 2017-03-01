@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Material Design";
+}
+
+<div class="text-center">Welcome to the Material Design Page!</div>
+
+@model SE407_Fiori.MaterialDesignViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Index", "MaterialDesign", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Material Design Type-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Material Design Type</label>
+                            @*@Html.LabelFor(Model => Model.NewMaterialDesign.MaterialDesignType)*@
+                            @Html.TextBoxFor(Model => Model.NewMaterialDesign.MaterialDesignType,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewMaterialDesign.MaterialDesignType"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                </div>
+            }
+        </div>
+    </div><!-- END OF Material Design Type INPUT FORM ROW -->
+    <!-- Displays Material Design Type Table From DB -->
+    <h2>List of Material Designs</h2>
+    <div class="tableMargin">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered tableSizeSM">
+                    <tr>
+                        <th>Material Design ID:</th>
+                        <th>Material Design Types:</th>
+                        <th>Update:</th>
+                    </tr>
+
+                    @foreach (var materialDesign in Model.MaterialDesignList)
+                    {
+                        <tr>
+                            <td>@materialDesign.MaterialDesignId</td>
+                            <td>@materialDesign.MaterialDesignType</td>
+                            <td><a asp-action="Edit" asp-route-id="@materialDesign.MaterialDesignId">Update</a></td>
+                        </tr>
+                    }
+                </table>
+            </div><!-- END OF TABLE RESPONSIVE-->
+        </div><!--END OF SECOND ROW-->
+    </div><!-- END OF TABLE MARGIN-->
+</div><!-- END OF CONTAINER-FLUID-->

@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Construction Design";
+}
+<div class="text-center">Welcome to the Construction Design Page!</div>
+
+@model SE407_Fiori.ConstructionDesignViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Index", "ConstructionDesign", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Construction Design Type-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Construction Design Type:</label>
+                            @*@Html.LabelFor(Model => Model.NewConstructionDesign.ConstructionDesignType)*@
+                            @Html.TextBoxFor(Model => Model.NewConstructionDesign.ConstructionDesignType, 
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewConstructionDesign.ConstructionDesignType"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                </div>
+            }
+        </div>
+    </div><!-- END OF Construction Design INPUT FORM ROW -->
+    <!-- Displays Construction Design Table From DB -->
+    <h2>List of Construction Designs</h2>
+    <div class="tableMargin">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered tableSizeSM">
+                    <tr>
+                        <th>Construction Design ID:</th>
+                        <th>Construction Design Types:</th>
+                        <th>Update:</th>
+                    </tr>
+
+                    @foreach (var ConstructionDesign in Model.ConstructionDesignList)
+                    {
+                        <tr>
+                            <td>@ConstructionDesign.ConstructionDesignId</td>
+                            <td>@ConstructionDesign.ConstructionDesignType</td>
+                            <td><a asp-action="Edit" asp-route-id="@ConstructionDesign.ConstructionDesignId">Update</a></td>
+                        </tr>
+                    }
+                </table>
+            </div><!-- END OF TABLE RESPONSIVE-->
+        </div><!--END OF SECOND ROW-->
+    </div><!-- END OF TABLE MARGIN-->
+</div><!-- END OF CONTAINER-FLUID-->

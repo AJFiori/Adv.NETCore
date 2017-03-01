@@ -1,0 +1,39 @@
+﻿@model SE407_Fiori.InspectionCodeViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "InspectionCode", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Inspection Date-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Inspection Code Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspectionCode.InspectionCodeName)*@
+                            @Html.TextBoxFor(Model => Model.NewInspectionCode.InspectionCodeName,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspectionCode.InspectionCodeName"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Inspection Notes-->
+                        <div class="form-group">
+                            <label>Inspectoin Code Desc</label>
+                            @*@Html.LabelFor(Model => Model.NewInspectionCode.InspectoinCodeDesc)*@
+                            @Html.TextBoxFor(Model => Model.NewInspectionCode.InspectoinCodeDesc,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspectionCode.InspectoinCodeDesc"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Inspection Codes", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Inspection Code INPUT FORM ROW -->
+</div>

@@ -1,0 +1,30 @@
+﻿@model SE407_Fiori.FunctionalClassViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "FunctionalClass", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Functional Class Type-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Functional Class Type:</label>
+                            @*@Html.LabelFor(Model => Model.NewFunctionalClass.FunctionalClassType)*@
+                            @Html.TextBoxFor(Model => Model.NewFunctionalClass.FunctionalClassType,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewFunctionalClass.FunctionalClassType"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Functional Classes", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Functional Class INPUT FORM ROW -->
+</div>

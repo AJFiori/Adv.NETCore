@@ -1,0 +1,31 @@
+﻿
+@model SE407_Fiori.MaterialDesignViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "MaterialDesign", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Material Design Type-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Material Design Type</label>
+                            @*@Html.LabelFor(Model => Model.NewMaterialDesign.MaterialDesignType)*@
+                            @Html.TextBoxFor(Model => Model.NewMaterialDesign.MaterialDesignType,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewMaterialDesign.MaterialDesignType"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Material Designs", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Material Design Type INPUT FORM ROW -->
+</div><!-- END OF CONTAINER-FLUID-->

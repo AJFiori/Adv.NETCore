@@ -1,0 +1,96 @@
+﻿@model SE407_Fiori.InspectionViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "Inspection", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <div class="col1">
+                        <!--Bridge Id DDL-->
+                        <div class="form-group">
+                            <label>Bridge Id:</label>
+                            @*@Html.LabelFor(Model => Model.NewBridge.MaterialDesignId)*@
+                            <select asp-for="@Model.NewInspection.BridgeId"
+                                    asp-items="@Model.Bridges" class="form-control">
+                                <option value="" selected>Choose Bridges</option>
+                            </select>
+                            <span asp-validation-for="@Model.NewInspection.BridgeId"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--InspectorOrg DDL-->
+                        <div class="form-group">
+                            <label>Inspectors Organization:</label>
+                            @*@Html.LabelFor(Model => Model.NewBridge.ConstructionDesignId)*@
+                            <select asp-for="@Model.NewInspection.InspectorId"
+                                    asp-items="@Model.Inspectors" class="form-control">
+                                <option value="" selected>Choose Inspectors Organization</option>
+                            </select>
+                            <span asp-validation-for="@Model.NewInspection.InspectorId"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--DeckInspectoinCodeId DDL-->
+                        <div class="form-group">
+                            <label>Deck Inspectoin Code Id:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspection.DeckInspectoinCodeId)*@
+                            <select asp-for="@Model.NewInspection.DeckInspectoinCodeId"
+                                    asp-items="@Model.InspectionCodes" class="form-control">
+                                <option value="" selected>Choose Deck Inspections</option>
+                            </select>
+                            <span asp-validation-for="@Model.NewInspection.DeckInspectoinCodeId"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <!--SubstructureInspectionCodeId DDL-->
+                        <div class="form-group">
+                            <label>Substructure Inspection Code Id:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspection.DeckInspectoinCodeId)*@
+                            <select asp-for="@Model.NewInspection.SubstructureInspectionCodeId"
+                                    asp-items="@Model.InspectionCodes" class="form-control">
+                                <option value="" selected>Choose Substructure Inspections</option>
+                            </select>
+                            <span asp-validation-for="@Model.NewInspection.SubstructureInspectionCodeId"
+                                  class="text-danger"></span>
+                        </div>
+                    </div><!--END OF COL1 Section-->
+                    <div class="col2">
+                        <!--Superstructure Inspection Code ID-->
+                        <div class="form-group">
+                            <label>Superstructure Inspection Code Id:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspection.DeckInspectoinCodeId)*@
+                            <select asp-for="@Model.NewInspection.SuperstructureInspectionCodeId"
+                                    asp-items="@Model.InspectionCodes" class="form-control">
+                                <option value="" selected>Choose Superstructure Inspections</option>
+                            </select>
+                            <span asp-validation-for="@Model.NewInspection.SuperstructureInspectionCodeId"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Inspection Date-->
+                        <div class="form-group">
+                            <label>Inspection Date:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspection.InspectionDate)*@
+                            @Html.TextBoxFor(Model => Model.NewInspection.InspectionDate,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspection.InspectionDate"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Inspection Notes-->
+                        <div class="form-group">
+                            <label>Inspection Notes</label>
+                            @*@Html.LabelFor(Model => Model.NewInspection.InspectionNotes)*@
+                            @Html.TextBoxFor(Model => Model.NewInspection.InspectionNotes,
+                                     new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspection.InspectionNotes"
+                                  class="text-danger"></span>
+                        </div>
+                    </div><!--END COL2 SECTION-->
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Inspections", "Index")
+                    </div>
+                </div>
+            }
+        </div><!-- END OF Inspection INPUT FORM ROW -->
+</div>

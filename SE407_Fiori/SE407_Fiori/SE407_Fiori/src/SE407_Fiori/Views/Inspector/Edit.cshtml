@@ -1,0 +1,68 @@
+﻿@model SE407_Fiori.InspectorViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "Inspector", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Inspector First-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Inspector First:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorFirst)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorFirst,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorFirst"
+                                  class="text-danger"></span>
+                        </div>
+                    <!--Inspector Last-->
+                        <div class="form-group">
+                            <label>Inspector Last:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorLast)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorLast,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorLast"
+                                  class="text-danger"></span>
+                        </div>
+                    <!--Inspector Org-->
+                        <div class="form-group">
+                            <label>Inspector Org:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorOrg)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorOrg,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorOrg"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Inspector Cert Effective-->
+                    <div class="col2">
+                        <div class="form-group">
+                            <label>Inspector Cert Effective:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorCertEffective)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorCertEffective,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorCertEffective"
+                                  class="text-danger"></span>
+                        </div>
+                    <!--Inspector Cert Expires-->
+                        <div class="form-group">
+                            <label>Inspector Cert Expires:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorCertExpires)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorCertExpires,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorCertExpires"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Inspectors", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF Inspection Code INPUT FORM ROW -->
+</div>

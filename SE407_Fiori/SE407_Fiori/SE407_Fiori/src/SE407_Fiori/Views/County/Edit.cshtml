@@ -1,0 +1,30 @@
+﻿@model SE407_Fiori.CountyViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Edit", "County", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--County Name-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>County Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewCounty.CountyName)*@
+                            @Html.TextBoxFor(Model => Model.NewCounty.CountyName,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewCounty.CountyName"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                    <div class="btn btn-lg">
+                        @Html.ActionLink("Back to Counties", "Index")
+                    </div>
+                </div>
+            }
+        </div>
+    </div><!-- END OF County INPUT FORM ROW -->
+</div>
