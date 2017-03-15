@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Inspectors";
+}
+
+<div class="text-center">Welcome to the Inspectors Page!</div>
+
+
+@model SE407_Fiori.InspectorViewModel
+
+@if (TempData["ResultMessage"] != null)
+{
+    <p class="alert alert-success" id="successMessage">
+        @TempData["ResultMessage"]
+    </p>
+}
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Index", "Inspector", FormMethod.Post))
+            {
+                <div class="formText two-col">
+                    <!--Inspector First-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Inspector First:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorFirst)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorFirst,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorFirst"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Inspector Last-->
+                        <div class="form-group">
+                            <label>Inspector Last:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorLast)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorLast,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorLast"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Inspector Org-->
+                        <div class="form-group">
+                            <label>Inspector Org:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorOrg)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorOrg,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorOrg"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!--Inspector Cert Effective-->
+                    <div class="col2">
+                        <div class="form-group">
+                            <label>Inspector Cert Effective:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorCertEffective)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorCertEffective,
+                                    new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorCertEffective"
+                                  class="text-danger"></span>
+                        </div>
+                        <!--Inspector Cert Expires-->
+                        <div class="form-group">
+                            <label>Inspector Cert Expires:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspector.InspectorCertExpires)*@
+                            @Html.TextBoxFor(Model => Model.NewInspector.InspectorCertExpires,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspector.InspectorCertExpires"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+                </div>
+            }
+        </div>
+    </div><!-- END OF Inspection Code INPUT FORM ROW -->
+    <!-- Displays Inspection Code Table From DB -->
+    <h2>List of Inspectors</h2>
+    <div class="tableMargin">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered tableSizeSM">
+                    <tr>
+                        <th>Inspector First Name:</th>
+                        <th>Inspector Last Name:</th>
+                        <th>Inspector Org:</th>
+                        <th>Inspector Cert Effective:</th>
+                        <th>Inspector Cert Expires:</th>
+                        <th>Update:</th>
+                        <th>Delete:</th>
+                    </tr>
+
+                    @foreach (var inspector in Model.InspectorList)
+                    {
+                        <tr>
+                            <td>@inspector.InspectorFirst</td>
+
+                            <td>@inspector.InspectorLast</td>
+
+                            <td>@inspector.InspectorOrg</td>
+
+                            <td>@inspector.InspectorCertEffective</td>
+
+                            <td>@inspector.InspectorCertExpires</td>
+                            <td><a asp-action="Edit" asp-route-id="@inspector.InspectorId">Update</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@inspector.InspectorId" onclick='return confirm("Are your sure?");'>Delete</a></td>
+                        </tr>
+                    }
+                </table>
+            </div><!-- END OF TABLE RESPONSIVE-->
+        </div><!--END OF SECOND ROW-->
+    </div><!-- END OF TABLE MARGIN-->
+</div><!-- END OF CONTAINER-FLUID-->

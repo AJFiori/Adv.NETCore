@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Inspection Code";
+}
+
+<div class="text-center">Welcome to the Inspection Code Page!</div>
+
+@model SE407_Fiori.InspectionCodeViewModel
+@if (TempData["ResultMessage"] != null)
+{
+    <p class="alert alert-success" id="successMessage">
+        @TempData["ResultMessage"]
+    </p>
+}
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            @using (Html.BeginForm("Index", "InspectionCode", FormMethod.Post))
+            {
+
+                <div class="formText two-col">
+                    <!--Inspection Date-->
+                    <div class="col1">
+                        <div class="form-group">
+                            <label>Inspection Code Name:</label>
+                            @*@Html.LabelFor(Model => Model.NewInspectionCode.InspectionCodeName)*@
+                            @Html.TextBoxFor(Model => Model.NewInspectionCode.InspectionCodeName,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspectionCode.InspectionCodeName"
+                                  class="text-danger"></span>
+                        </div>
+                    <!--Inspection Notes-->
+                        <div class="form-group">
+                            <label>Inspectoin Code Desc</label>
+                            @*@Html.LabelFor(Model => Model.NewInspectionCode.InspectoinCodeDesc)*@
+                            @Html.TextBoxFor(Model => Model.NewInspectionCode.InspectoinCodeDesc,
+                                new { @class = "form-control" })
+                            <span asp-validation-for="@Model.NewInspectionCode.InspectoinCodeDesc"
+                                  class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                    <!--Submit Button-->
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-info btn-medium" />
+
+                </div>
+            }
+        </div>
+    </div><!-- END OF Inspection Code INPUT FORM ROW -->
+    <!-- Displays Inspection Code Table From DB -->
+    <h2>List of Inspection Codes</h2>
+    <div class="tableMargin">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-condensed table-bordered tableSizeSM">
+                    <tr>
+                        <th>Inspection Code ID:</th>
+                        <th>Inspection Code Name:</th>
+                        <th>Inspectoin Code Desc:</th>
+                        <th>Update:</th>
+                        <th>Delete:</th>
+                    </tr>
+
+                    @foreach (var inspectionCode in Model.InspectionCodeList)
+                    {
+                        <tr>
+                            <td>@inspectionCode.InspectionCodeId</td>
+                            <td>@inspectionCode.InspectionCodeName</td>
+                            <td>@inspectionCode.InspectoinCodeDesc</td>
+                            <td><a asp-action="Edit" asp-route-id="@inspectionCode.InspectionCodeId">Update</a></td>
+                            <td><a asp-action="Delete" asp-route-id="@inspectionCode.InspectionCodeId" onclick='return confirm("Are your sure?");'>Delete</a></td>
+
+                        </tr>
+                    }
+                </table>
+            </div><!-- END OF TABLE RESPONSIVE-->
+        </div><!--END OF SECOND ROW-->
+    </div><!-- END OF TABLE MARGIN-->
+</div><!-- END OF CONTAINER-FLUID-->
